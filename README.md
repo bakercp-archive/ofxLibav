@@ -1,4 +1,3 @@
-ofxLibavUtils
-=============
+A set of utilities for working with libav.
 
-A collection of libav related tools for openFrameworks.
+Libav static libs compiled with license: LGPL version 2.1 or later
