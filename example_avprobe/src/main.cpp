@@ -22,6 +22,24 @@
 //
 // =============================================================================
 
+//#include <time.h>
+//extern "C"
+//{
+//#define __STDC_CONSTANT_MACROS // for UINT64_C
+//#include <libavcodec/avcodec.h>
+//#include <libavformat/avformat.h>
+//#include <libswscale/swscale.h>
+//#include <libavutil/pixdesc.h>
+//#include <libavutil/time.h>
+////#include "libavformat/avformat.h"
+////#include "libavcodec/avcodec.h"
+////#include "libavutil/opt.h"
+////#include "libavutil/pixdesc.h"
+////#include "libavutil/dict.h"
+////#include "libavutil/libm.h"
+////#include "libavdevice/avdevice.h"
+//}
+
 
 #include "ofApp.h"
 

@@ -1,2 +1,1 @@
-ofxJSON
-ofxLibavUtils
+ofxLibav

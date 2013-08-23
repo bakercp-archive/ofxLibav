@@ -1,18 +1,54 @@
+// =============================================================================
+//
+// Copyright (c) 2009-2013 Christopher Baker <http://christopherbaker.net>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+//
+// =============================================================================
+
+
 #pragma once
 
-#include <math.h>
+//
+//#include <math.h>
+//#include <ctime.h>
+//
+//extern "C"
+//{
+//#define __STDC_CONSTANT_MACROS // for UINT64_C
+////#include <libavcodec/avcodec.h>
+////#include <libavformat/avformat.h>
+////#include <libswscale/swscale.h>
+////#include <libavutil/pixdesc.h>
+////#include <libavutil/time.h>
+////#include "libavformat/avformat.h"
+////#include "libavcodec/avcodec.h"
+////#include "libavutil/opt.h"
+////#include "libavutil/pixdesc.h"
+////#include "libavutil/dict.h"
+////#include "libavutil/libm.h"
+////#include "libavdevice/avdevice.h"
+//}
 
-#include "ofxJSONElement.h"
 
-extern "C"
-{
-#define __STDC_CONSTANT_MACROS // for UINT64_C
-#include <libavcodec/avcodec.h>
-#include <libavformat/avformat.h>
-#include <libswscale/swscale.h>
-#include <libavutil/pixdesc.h>
-}
 
+/*
 static const char *const binary_unit_prefixes [] = { "", "Ki", "Mi", "Gi", "Ti", "Pi" };
 static const char *const decimal_unit_prefixes[] = { "", "K" , "M" , "G" , "T" , "P"  };
 
@@ -121,19 +157,42 @@ static void print_error(const char *filename, int err)
 }
 
 
+class MediaInfo
+{
+public:
+
+//    Poco::Net::
+    AVMediaType mediaType;
+};
+
 class ofxAVProbe {
 public:
     
-    static ofxJSONElement probe(const ofFile& file) {
+    static MediaInfo probe(const ofFile& file) {
+        MediaInfo info;
+
+//        uuid
+//        uri
+//        name
+//        type
+//        duration
+//        frameCount
+//        playcount
+//        filehealth
+//        filesize
+//        size
+
+
+//        result["UUID"] = 
+//        result["URI"] = "hi";//file.path();
+
         
-        ofxJSONElement result;
-        
-        if(!file.exists()) {
-            ofLogError("ofxAVProbe::probe") << "File " << file.getAbsolutePath() << " does not exist.";
-            return result;
-        }
-        
-        string filename = file.getAbsolutePath();
+//        if(!file.exists()) {
+//            ofLogError("ofxAVProbe::probe") << "File " << file.getAbsolutePath() << " does not exist.";
+//            return result;
+//        }
+
+        std::string filename = file.getAbsolutePath();
 
         av_register_all();
 
@@ -142,25 +201,26 @@ public:
         int err = -1;
         
         err = avformat_open_input(&fmt_ctx,
-                                      filename.c_str(),
-                                      NULL, // we are not asking for a specific format
-                                      NULL);// we are bit providing specific format details
+                                  filename.c_str(),
+                                  NULL,  // we are not asking for a specific format
+                                  NULL); // we are not providing specific format details
 
         if(err < 0) {
             print_error(filename.c_str(),err);
-            return result;
+            return info;
         }
         
-        /* fill the streams in the format context */
+        // fill the streams in the format context 
         err = avformat_find_stream_info(fmt_ctx, NULL);
     
         if(err < 0) {
             print_error(filename.c_str(),err);
-            return result;
+            return info;
         }
 
-        /* bind a decoder to each input stream */
-        for (size_t i = 0; i < fmt_ctx->nb_streams; i++) {
+        // bind a decoder to each input stream
+        for(std::size_t i = 0; i < fmt_ctx->nb_streams; i++)
+        {
             AVStream* stream = fmt_ctx->streams[i];
             AVCodec*  codec  = NULL;
 
@@ -180,7 +240,8 @@ public:
             const AVCodec *dec;
             const char *profile;
             char val_str[128];
-            AVRational display_aspect_ratio, *sar = NULL;
+            AVRational display_aspect_ratio;
+            AVRational *sar = NULL;
             const AVPixFmtDescriptor *desc;
             
             if ((dec_ctx = stream->codec)) {
@@ -201,52 +262,47 @@ public:
                 cout << "codec_tag_string=" << val_str << endl;
                 cout << "codec_tag=" << tag_string(val_str, sizeof(val_str),dec_ctx->codec_tag) << endl;
                 
-                // print profile, if there is one 
-                if (dec && (profile = av_get_profile_name(dec, dec_ctx->profile))) {
-                    cout << "profile=" << profile << endl;
-                }
-                
-                switch (dec_ctx->codec_type) {
-                    case AVMEDIA_TYPE_UNKNOWN:       ///< Usually treated as AVMEDIA_TYPE_DATA
-                        
-                    case AVMEDIA_TYPE_DATA:          ///< Opaque data information usually continuous
-                        
-                    case AVMEDIA_TYPE_SUBTITLE:
-                    
-                    case AVMEDIA_TYPE_ATTACHMENT:    ///< Opaque data information usually sparse
-                        
-                    case AVMEDIA_TYPE_NB:
-
-                    case AVMEDIA_TYPE_VIDEO:
-                        cout << "width=" << dec_ctx->width << endl;
-                        cout << "height=" << dec_ctx->height << endl;
-                        cout << "has_b_frames=" << dec_ctx->has_b_frames << endl;
-                        if (dec_ctx->sample_aspect_ratio.num) {
-                            sar = &dec_ctx->sample_aspect_ratio;
-                        } else if (stream->sample_aspect_ratio.num) {
-                            sar = &stream->sample_aspect_ratio;
-                        }
-                        
-                        if (sar) {
-                            cout << "sample_aspect_ratio=" << rational_string(val_str, sizeof(val_str), ":", sar) << endl;
-                            av_reduce(&display_aspect_ratio.num, &display_aspect_ratio.den,
-                                      dec_ctx->width  * sar->num, dec_ctx->height * sar->den,
-                                      1024*1024);
-
-                            cout << "display_aspect_ratio=" << rational_string(val_str, sizeof(val_str), ":", &display_aspect_ratio) << endl;
-                        }
-                        
-                        desc = av_pix_fmt_desc_get(dec_ctx->pix_fmt);
-                        cout << "pix_fmt=" << (desc ? desc->name : "unknown") << endl;;
-                        cout << "level="   << (dec_ctx->level) << endl;
-                        break;
-//                            
-                    case AVMEDIA_TYPE_AUDIO:
-                        cout << "sample_rate=" << value_string(val_str, sizeof(val_str),dec_ctx->sample_rate,unit_hertz_str) << endl;
-                        cout << "channels" << dec_ctx->channels << endl;
-                        cout << "bits_per_sample" << av_get_bits_per_sample(dec_ctx->codec_id) << endl;
-                        break;
-                }
+//                // print profile, if there is one 
+//                if (dec && (profile = av_get_profile_name(dec, dec_ctx->profile))) {
+//                    cout << "profile=" << profile << endl;
+//                }
+//
+//                switch (dec_ctx->codec_type) {
+//                    case AVMEDIA_TYPE_UNKNOWN:       ///< Usually treated as AVMEDIA_TYPE_DATA
+//                    case AVMEDIA_TYPE_DATA:          ///< Opaque data information usually continuous
+//                    case AVMEDIA_TYPE_SUBTITLE:
+//                    case AVMEDIA_TYPE_ATTACHMENT:    ///< Opaque data information usually sparse
+//                    case AVMEDIA_TYPE_NB:
+//                    case AVMEDIA_TYPE_VIDEO:
+//                        cout << "width=" << dec_ctx->width << endl;
+//                        cout << "height=" << dec_ctx->height << endl;
+//                        cout << "has_b_frames=" << dec_ctx->has_b_frames << endl;
+//                        if (dec_ctx->sample_aspect_ratio.num) {
+//                            sar = &dec_ctx->sample_aspect_ratio;
+//                        } else if (stream->sample_aspect_ratio.num) {
+//                            sar = &stream->sample_aspect_ratio;
+//                        }
+//                        
+//                        if (sar) {
+//                            cout << "sample_aspect_ratio=" << rational_string(val_str, sizeof(val_str), ":", sar) << endl;
+//                            av_reduce(&display_aspect_ratio.num, &display_aspect_ratio.den,
+//                                      dec_ctx->width  * sar->num, dec_ctx->height * sar->den,
+//                                      1024*1024);
+//
+//                            cout << "display_aspect_ratio=" << rational_string(val_str, sizeof(val_str), ":", &display_aspect_ratio) << endl;
+//                        }
+//                        
+//                        desc = av_pix_fmt_desc_get(dec_ctx->pix_fmt);
+//                        cout << "pix_fmt=" << (desc ? desc->name : "unknown") << endl;;
+//                        cout << "level="   << (dec_ctx->level) << endl;
+//                        break;
+////                            
+//                    case AVMEDIA_TYPE_AUDIO:
+//                        cout << "sample_rate=" << value_string(val_str, sizeof(val_str),dec_ctx->sample_rate,unit_hertz_str) << endl;
+//                        cout << "channels" << dec_ctx->channels << endl;
+//                        cout << "bits_per_sample" << av_get_bits_per_sample(dec_ctx->codec_id) << endl;
+//                        break;
+//                }
             } else {
                 cout << "codec_type=" << "unknown" << endl;
             }
@@ -256,7 +312,8 @@ public:
             
             cout <<"avg_frame_rate="<< rational_string(val_str, sizeof(val_str), "/", &stream->avg_frame_rate) << endl;
            
-            if (dec_ctx->bit_rate) {
+            if (dec_ctx->bit_rate)
+            {
                 cout << "bit_rate=" << value_string(val_str, sizeof(val_str),dec_ctx->bit_rate, unit_bit_per_second_str) << endl;
             }
 
@@ -271,8 +328,8 @@ public:
             cout << stream->metadata << "tags" << endl;
         
         }
-    
-        /* close decoder for each stream */
+
+        // close decoder for each stream
         for (int i = 0; i < fmt_ctx->nb_streams; i++) {
             AVStream *stream = fmt_ctx->streams[i];
             
@@ -283,6 +340,10 @@ public:
         avformat_close_input(&fmt_ctx);
 
     }
+
+    ofThread
     
     
 };
+
+*/

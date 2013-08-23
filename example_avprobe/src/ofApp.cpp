@@ -47,5 +47,5 @@ void ofApp::draw()
 //------------------------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo)
 {
-        ofxAVProbe::probe(ofFile(dragInfo.files[0]));
+    ofxAVProbe::probe(ofFile(dragInfo.files[0]));
 }
