@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7ced9fcc5bf62c4915c8d09f62ad86a7 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 554e82f6bf0f134ec9bf40aa12f238c7 /* json_reader.cpp */; };
-		9b06c5cae570b630a97e51c38887e84b /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58f8cbf3c566f6908846e5fbf7d0de36 /* json_writer.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -21,7 +19,7 @@
 		E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9790E8CC7DD009D7055 /* OpenGL.framework */; };
 		E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
-		E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
+		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 		E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
 		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
 		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
@@ -29,8 +27,6 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
-		ae32f1807796b1050e082651a5fbf40d /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0f867b04bf36a560c2493c097d84756e /* json_value.cpp */; };
-		bedfee7400c58ea4e412b757bd605a7b /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = f2b099e6bd1199664c48b177eb0b19be /* ofxJSONElement.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,29 +60,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0cd3145a0f2a0e5266668b1b553e348e /* value.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = value.h; path = ../../../addons/ofxJSON/libs/jsoncpp/include/json/value.h; sourceTree = SOURCE_ROOT; };
-		0f867b04bf36a560c2493c097d84756e /* json_value.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = json_value.cpp; path = ../../../addons/ofxJSON/libs/jsoncpp/src/json_value.cpp; sourceTree = SOURCE_ROOT; };
 		1020f996191160068a51b0cb4d9f76b8 /* vda.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = vda.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavcodec/vda.h; sourceTree = SOURCE_ROOT; };
 		12297bb315576df9befb0d6274c9476f /* avfilter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = avfilter.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavfilter/avfilter.h; sourceTree = SOURCE_ROOT; };
-		26a541233bc6f736e758f718c07ea8ec /* ofxJSONElement.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxJSONElement.h; path = ../../../addons/ofxJSON/src/ofxJSONElement.h; sourceTree = SOURCE_ROOT; };
 		27f2681dd49bc8dcdbfa561c5792f8a9 /* buffersink.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = buffersink.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavfilter/buffersink.h; sourceTree = SOURCE_ROOT; };
-		2c7cf000b7b4f782c187c353cb6fc597 /* json.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = json.h; path = ../../../addons/ofxJSON/libs/jsoncpp/include/json/json.h; sourceTree = SOURCE_ROOT; };
 		2e7a5b95248a9ec18aa326dd089a7d64 /* vdpau.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = vdpau.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavcodec/vdpau.h; sourceTree = SOURCE_ROOT; };
 		3093911625faf0ff6cc3c3c0ba9c9b47 /* avfft.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = avfft.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavcodec/avfft.h; sourceTree = SOURCE_ROOT; };
 		369c757d15a63be7ec699a20990dc05e /* avdevice.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = avdevice.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavdevice/avdevice.h; sourceTree = SOURCE_ROOT; };
-		3b869edfc4ea2316217496212b5ae53c /* json_batchallocator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = json_batchallocator.h; path = ../../../addons/ofxJSON/libs/jsoncpp/src/json_batchallocator.h; sourceTree = SOURCE_ROOT; };
 		3da4343693dd85fdfd915ab46d0099ff /* version.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = version.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavdevice/version.h; sourceTree = SOURCE_ROOT; };
 		461a61b2b5af741f6da9fd98814d198a /* version.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = version.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavformat/version.h; sourceTree = SOURCE_ROOT; };
 		4fadc90dfc99da10d7ad5d448202d060 /* avio.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = avio.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavformat/avio.h; sourceTree = SOURCE_ROOT; };
 		54c46c0afdd5a81b28d8cc7b46abcceb /* buffersrc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = buffersrc.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavfilter/buffersrc.h; sourceTree = SOURCE_ROOT; };
-		554e82f6bf0f134ec9bf40aa12f238c7 /* json_reader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = json_reader.cpp; path = ../../../addons/ofxJSON/libs/jsoncpp/src/json_reader.cpp; sourceTree = SOURCE_ROOT; };
-		58f8cbf3c566f6908846e5fbf7d0de36 /* json_writer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = json_writer.cpp; path = ../../../addons/ofxJSON/libs/jsoncpp/src/json_writer.cpp; sourceTree = SOURCE_ROOT; };
-		65fcae08d326d7ef1910a329fc1bcc4f /* writer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = writer.h; path = ../../../addons/ofxJSON/libs/jsoncpp/include/json/writer.h; sourceTree = SOURCE_ROOT; };
 		6cf709f2f1f005b4af6fea34fb2cc809 /* version.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = version.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavcodec/version.h; sourceTree = SOURCE_ROOT; };
-		6f94aca14609a0de769d3b91970279f4 /* features.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = features.h; path = ../../../addons/ofxJSON/libs/jsoncpp/include/json/features.h; sourceTree = SOURCE_ROOT; };
 		83b13293f7af0d9e97795cdbb978582f /* avcodec.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = avcodec.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavcodec/avcodec.h; sourceTree = SOURCE_ROOT; };
 		863b3496f7c237fb4712e4834bbfa174 /* avformat.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = avformat.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavformat/avformat.h; sourceTree = SOURCE_ROOT; };
-		98169aec4e990dbdf3275463650ffd78 /* config.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = config.h; path = ../../../addons/ofxJSON/libs/jsoncpp/include/json/config.h; sourceTree = SOURCE_ROOT; };
 		99d8c4d6c77df5ede166597c870ec5f9 /* ofxAVProbe.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAVProbe.h; path = ../../../addons/ofxLibavUtils/src/ofxAVProbe.h; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -101,8 +87,8 @@
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
 		E4B69B5B0A3A1756003C02F2 /* example_avprobeDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example_avprobeDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
-		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
-		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
+		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		E4C2424510CC5A17004149E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -112,18 +98,13 @@
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
-		aa19c7b5eb9660087056e75a44a0a212 /* forwards.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = forwards.h; path = ../../../addons/ofxJSON/libs/jsoncpp/include/json/forwards.h; sourceTree = SOURCE_ROOT; };
 		af097b21b4720868cb3a64d80625063f /* avfiltergraph.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = avfiltergraph.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavfilter/avfiltergraph.h; sourceTree = SOURCE_ROOT; };
 		d003d188171c708b0e4c75b9e0490fa1 /* xvmc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = xvmc.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavcodec/xvmc.h; sourceTree = SOURCE_ROOT; };
 		d567e9497909523d21142970c107c72e /* version.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = version.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavfilter/version.h; sourceTree = SOURCE_ROOT; };
-		d5c09faa58f07c4d65b0a5ae46815b3e /* reader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = reader.h; path = ../../../addons/ofxJSON/libs/jsoncpp/include/json/reader.h; sourceTree = SOURCE_ROOT; };
 		df20a57436bede517e304fff95a5088e /* avresample.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = avresample.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavresample/avresample.h; sourceTree = SOURCE_ROOT; };
 		df5973f3c4cac5d1b1f92d7b59884c3a /* vaapi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = vaapi.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavcodec/vaapi.h; sourceTree = SOURCE_ROOT; };
 		e3e7a5fd957b1d1186559b97897e19da /* dxva2.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = dxva2.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavcodec/dxva2.h; sourceTree = SOURCE_ROOT; };
-		e736c8b706469fa04382adfe34f20473 /* autolink.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = autolink.h; path = ../../../addons/ofxJSON/libs/jsoncpp/include/json/autolink.h; sourceTree = SOURCE_ROOT; };
 		ef3309f4952f5c757de705c34da9ca4f /* swscale.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = swscale.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libswscale/swscale.h; sourceTree = SOURCE_ROOT; };
-		efddf1a86ce5c1107eff387323ffdc0e /* json_tool.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = json_tool.h; path = ../../../addons/ofxJSON/libs/jsoncpp/src/json_tool.h; sourceTree = SOURCE_ROOT; };
-		f2b099e6bd1199664c48b177eb0b19be /* ofxJSONElement.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxJSONElement.cpp; path = ../../../addons/ofxJSON/src/ofxJSONElement.cpp; sourceTree = SOURCE_ROOT; };
 		fc87b8809d65fa2c6c8e6ee0d9cb3df3 /* version.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = version.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libswscale/version.h; sourceTree = SOURCE_ROOT; };
 		fe96ee63f65beb238c6f078d6671ec76 /* version.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = version.h; path = ../../../addons/ofxLibavUtils/libs/libav/include/libavresample/version.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -164,24 +145,6 @@
 			name = libav;
 			sourceTree = "<group>";
 		};
-		2865daef86b1907a704ca70bc58ce980 /* ofxJSON */ = {
-			isa = PBXGroup;
-			children = (
-				292af6148769654d0df26018ef37b13b /* src */,
-				f40e80cb2d443cba9581dd03c57dde89 /* libs */,
-			);
-			name = ofxJSON;
-			sourceTree = "<group>";
-		};
-		292af6148769654d0df26018ef37b13b /* src */ = {
-			isa = PBXGroup;
-			children = (
-				f2b099e6bd1199664c48b177eb0b19be /* ofxJSONElement.cpp */,
-				26a541233bc6f736e758f718c07ea8ec /* ofxJSONElement.h */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
 		3b6ed510cfeb257ec4a7b5ba11fc3f10 /* libavfilter */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,21 +155,6 @@
 				d567e9497909523d21142970c107c72e /* version.h */,
 			);
 			name = libavfilter;
-			sourceTree = "<group>";
-		};
-		58ad3bd71b781d9bc25763c8ec8bc3f0 /* json */ = {
-			isa = PBXGroup;
-			children = (
-				e736c8b706469fa04382adfe34f20473 /* autolink.h */,
-				98169aec4e990dbdf3275463650ffd78 /* config.h */,
-				6f94aca14609a0de769d3b91970279f4 /* features.h */,
-				aa19c7b5eb9660087056e75a44a0a212 /* forwards.h */,
-				2c7cf000b7b4f782c187c353cb6fc597 /* json.h */,
-				d5c09faa58f07c4d65b0a5ae46815b3e /* reader.h */,
-				0cd3145a0f2a0e5266668b1b553e348e /* value.h */,
-				65fcae08d326d7ef1910a329fc1bcc4f /* writer.h */,
-			);
-			name = json;
 			sourceTree = "<group>";
 		};
 		74865ba8a64c7d30075e96b08178128c /* libswscale */ = {
@@ -259,19 +207,9 @@
 			name = libavdevice;
 			sourceTree = "<group>";
 		};
-		977a836dd2c489ccc5e330fff7b818bd /* jsoncpp */ = {
-			isa = PBXGroup;
-			children = (
-				d486fc87f063317bb47e9fac176ade3a /* include */,
-				ccdc6f9ccf925cc402160b85bf984424 /* src */,
-			);
-			name = jsoncpp;
-			sourceTree = "<group>";
-		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				2865daef86b1907a704ca70bc58ce980 /* ofxJSON */,
 				e9b37269eaa2a7c1dad5eb885fa3cc16 /* ofxLibavUtils */,
 			);
 			name = addons;
@@ -341,8 +279,8 @@
 			isa = PBXGroup;
 			children = (
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
-				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
+				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
+				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -365,26 +303,6 @@
 				e4cd2d943840ed87d2e081c641b7c393 /* libavformat */,
 				80566cabc5eb6c66c0a075619cf86c1e /* libavresample */,
 				74865ba8a64c7d30075e96b08178128c /* libswscale */,
-			);
-			name = include;
-			sourceTree = "<group>";
-		};
-		ccdc6f9ccf925cc402160b85bf984424 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				3b869edfc4ea2316217496212b5ae53c /* json_batchallocator.h */,
-				554e82f6bf0f134ec9bf40aa12f238c7 /* json_reader.cpp */,
-				efddf1a86ce5c1107eff387323ffdc0e /* json_tool.h */,
-				0f867b04bf36a560c2493c097d84756e /* json_value.cpp */,
-				58f8cbf3c566f6908846e5fbf7d0de36 /* json_writer.cpp */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
-		d486fc87f063317bb47e9fac176ade3a /* include */ = {
-			isa = PBXGroup;
-			children = (
-				58ad3bd71b781d9bc25763c8ec8bc3f0 /* json */,
 			);
 			name = include;
 			sourceTree = "<group>";
@@ -414,14 +332,6 @@
 				75a154eadf82a9b3e499b131a3938d9f /* libs */,
 			);
 			name = ofxLibavUtils;
-			sourceTree = "<group>";
-		};
-		f40e80cb2d443cba9581dd03c57dde89 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				977a836dd2c489ccc5e330fff7b818bd /* jsoncpp */,
-			);
-			name = libs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,11 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				bedfee7400c58ea4e412b757bd605a7b /* ofxJSONElement.cpp in Sources */,
-				7ced9fcc5bf62c4915c8d09f62ad86a7 /* json_reader.cpp in Sources */,
-				ae32f1807796b1050e082651a5fbf40d /* json_value.cpp in Sources */,
-				9b06c5cae570b630a97e51c38887e84b /* json_writer.cpp in Sources */,
+				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,12 +577,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					src,
-					../../../addons/ofxJSON/libs,
-					../../../addons/ofxJSON/libs/jsoncpp,
-					../../../addons/ofxJSON/libs/jsoncpp/include,
-					../../../addons/ofxJSON/libs/jsoncpp/include/json,
-					../../../addons/ofxJSON/libs/jsoncpp/src,
-					../../../addons/ofxJSON/src,
 					../../../addons/ofxLibavUtils/libs,
 					../../../addons/ofxLibavUtils/libs/libav,
 					../../../addons/ofxLibavUtils/libs/libav/include,
@@ -779,12 +679,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(OF_CORE_HEADERS)",
 					src,
-					../../../addons/ofxJSON/libs,
-					../../../addons/ofxJSON/libs/jsoncpp,
-					../../../addons/ofxJSON/libs/jsoncpp/include,
-					../../../addons/ofxJSON/libs/jsoncpp/include/json,
-					../../../addons/ofxJSON/libs/jsoncpp/src,
-					../../../addons/ofxJSON/src,
 					../../../addons/ofxLibavUtils/libs,
 					../../../addons/ofxLibavUtils/libs/libav,
 					../../../addons/ofxLibavUtils/libs/libav/include,
