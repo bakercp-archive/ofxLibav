@@ -29,7 +29,10 @@
 //------------------------------------------------------------------------------
 void ofApp::setup()
 {
-    ofxAVProbe::probe(ofFile("0_fingers.mov"));
+    // simulate a drag event for platforms that don't yet support drag events
+    ofDragInfo simulatedDrag;
+    simulatedDrag.files.push_back(ofToDataPath("0_fingers.mov"));
+    ofNotifyDragEvent(simulatedDrag);
 }
 
 //------------------------------------------------------------------------------
@@ -37,15 +40,77 @@ void ofApp::update()
 {
 }
 
-//--------------------------------------------------------------
+//------------------------------------------------------------------------------
 void ofApp::draw()
 {
     ofBackground(0);
-    ofDrawBitmapString("Drag a Media File Onto the Window:", 15,15);
+    ofDrawBitmapStringHighlight("Drag a Media File Onto the Window:",
+                                15,
+                                25,
+                                ofColor::white,
+                                ofColor::black);
+
+    ofSetColor(255);
+    ofDrawBitmapString(displayString,15,45);
 }
 
 //------------------------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo)
 {
-    ofxAVProbe::probe(ofFile(dragInfo.files[0]));
+    MediaInfo info = AVProbe::probe(dragInfo.files[0]);
+
+    std::stringstream ss;
+
+    ss << "filename:" << " " << info.path.getFileName() << endl;
+
+    for(size_t i = 0; i < info.streams.size(); i++)
+    {
+        ss << endl;
+        ss << "stream (" << ofToString(i+1) << "/" << info.streams.size() << ")" << endl;
+        ss << "=========================================================================" << endl;
+
+        Stream stream = info.streams[i];
+
+        if(stream.codecType == AVMEDIA_TYPE_VIDEO)
+        {
+            ss << setw(20) << "type:" << " " << "VIDEO STREAM" << endl;
+            ss << setw(20) << "width:" << " " << stream.videoWidth << endl;
+            ss << setw(20) << "height:" << " " << stream.videoHeight << endl;
+            ss << setw(20) << "decoded format:" << " " << stream.videoDecodedFormat << endl;
+
+        }
+        else if(stream.codecType == AVMEDIA_TYPE_AUDIO)
+        {
+            ss << setw(20) << "type:" << " " << "AUDIO STREAM" << endl;
+            ss << setw(20) << "num channels:" << " " << stream.audioNumChannels << endl;
+            ss << setw(20) << "bits / sample:" << " " << stream.audioBitsPerSample << endl;
+            ss << setw(20) << "sample rate:" << " " << stream.audioSampleRate << endl;
+
+        }
+        else
+        {
+        }
+
+        ss << setw(20) << "codec:" << " " << stream.codecName << " [" << stream.codecLongName << "]" << endl;
+        ss << setw(20) << "codec tag:" << " " << stream.codecTag << endl;
+        ss << setw(20) << "stream codec tag:" << " " << stream.streamCodecTag << endl;
+        ss << setw(20) << "profile:" << " " << stream.codecProfile << endl;
+        ss << endl;
+
+        ss << setw(20) << "avg. bitrate:" << " " << stream.averageBitRate << endl;
+        ss << setw(20) << "avg. framerate:" << " " << (double)stream.averageFrameRate.num / stream.averageFrameRate.den << endl;
+
+        ss << setw(20) << "Metadata:" << endl;
+
+        Poco::Net::NameValueCollection::ConstIterator iter = stream.metadata.begin();
+        while(iter != stream.metadata.end())
+        {
+            ss << setw(30) << iter->first << "=" << iter->second << endl;
+            ++iter;
+        }
+
+    }
+
+    displayString = ss.str();
+
 }

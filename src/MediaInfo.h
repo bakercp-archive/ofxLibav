@@ -26,25 +26,79 @@
 #pragma once
 
 
-#include "ofMain.h"
-#include "AVProbe.h"
-#include "MediaInfo.h"
+#include "Poco/Path.h"
+#include "Poco/URI.h"
+#include "Poco/Net/NameValueCollection.h"
 
 
-using namespace ofx::Media;
+extern "C"
+{
+    #include "libavcodec/avcodec.h"
+}
 
 
-class ofApp: public ofBaseApp
+#include <time.h>
+
+namespace ofx {
+namespace Media {
+
+
+class Stream
 {
 public:
-    void setup();
-    void update();
-    void draw();
+    Stream();
+    ~Stream();
 
-    void dragEvent(ofDragInfo dragInfo);
+    int id;
 
-    AVProbe probe;
-    
-    std::string displayString;
-    
+    AVCodecID   codecID;
+    AVMediaType codecType;
+    std::string codecName;
+    std::string codecLongName;
+    std::string codecProfile;
+    std::string codecTag;
+    std::string streamCodecTag;
+    int         codecProperties;
+    int         level;
+
+    int averageBitRate;
+    AVRational averageFrameRate;
+    AVRational timeBase;
+    long long duration;
+    long long startTime;
+    long long numFrames;
+
+    // audio
+    int audioNumChannels;
+    int audioSampleRate; // Hz
+    int audioBitsPerSample;
+
+    // video
+    int videoWidth;
+    int videoHeight;
+    float videoFrameRate; // Hz
+    bool videoHasBFrames;
+
+    AVRational videoSampleAspectRatio;
+    AVRational videoDisplayAspectRatio;
+    std::string videoPixelFormatDescriptor; // numerical values are available
+
+    std::string videoDecodedFormat; // ?
+
+    Poco::Net::NameValueCollection metadata;
 };
+
+
+class MediaInfo
+{
+public:
+    MediaInfo();
+    ~MediaInfo();
+
+    Poco::Path path;
+    std::vector<Stream> streams;
+
+};
+
+
+} } // namespace ofx::Media

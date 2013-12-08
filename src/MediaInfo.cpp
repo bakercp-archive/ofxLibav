@@ -23,28 +23,65 @@
 // =============================================================================
 
 
-#pragma once
-
-
-#include "ofMain.h"
-#include "AVProbe.h"
 #include "MediaInfo.h"
 
 
-using namespace ofx::Media;
+namespace ofx {
+namespace Media {
 
 
-class ofApp: public ofBaseApp
+Stream::Stream():
+    id(-1),
+    codecID(AV_CODEC_ID_NONE),
+    codecName("unknown"),
+    codecLongName("unknown"),
+    codecProfile("unknown"),
+    codecProperties(0),
+    level(-1),
+    codecTag("unknown"),
+    streamCodecTag("unknown"),
+    averageBitRate(-1),
+
+    duration(-1),
+    startTime(-1),
+    numFrames(-1),
+
+    audioNumChannels(-1),
+    audioSampleRate(-1),
+    audioBitsPerSample(-1),
+
+    videoWidth(0),
+    videoHeight(0),
+    videoFrameRate(0),
+    videoHasBFrames(false),
+    videoPixelFormatDescriptor("unknown"),
+    videoDecodedFormat("unknown")
 {
-public:
-    void setup();
-    void update();
-    void draw();
+    averageFrameRate.num = -1;
+    averageFrameRate.den = -1;
 
-    void dragEvent(ofDragInfo dragInfo);
+    timeBase.num = -1;
+    timeBase.den = -1;
 
-    AVProbe probe;
-    
-    std::string displayString;
-    
-};
+    videoSampleAspectRatio.num = -1;
+    videoSampleAspectRatio.den = -1;
+
+    videoDisplayAspectRatio.num = -1;
+    videoDisplayAspectRatio.den = -1;
+}
+
+Stream::~Stream()
+{
+}
+
+
+MediaInfo::MediaInfo()
+{
+}
+
+MediaInfo::~MediaInfo()
+{
+}
+
+
+} } // namespace ofx::Media

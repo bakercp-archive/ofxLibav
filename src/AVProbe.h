@@ -26,25 +26,19 @@
 #pragma once
 
 
-#include "ofMain.h"
-#include "AVProbe.h"
+#include "ofUtils.h"
 #include "MediaInfo.h"
 
 
-using namespace ofx::Media;
+namespace ofx {
+namespace Media {
 
 
-class ofApp: public ofBaseApp
+class AVProbe
 {
 public:
-    void setup();
-    void update();
-    void draw();
-
-    void dragEvent(ofDragInfo dragInfo);
-
-    AVProbe probe;
-    
-    std::string displayString;
-    
+    static MediaInfo probe(const std::string& filePath);
 };
+
+
+} } // namespace ofx::Media
