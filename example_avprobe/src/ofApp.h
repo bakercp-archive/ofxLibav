@@ -27,8 +27,7 @@
 
 
 #include "ofMain.h"
-#include "AVProbe.h"
-#include "MediaInfo.h"
+#include "ofxLibav.h"
 
 
 using namespace ofx::Media;

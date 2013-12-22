@@ -57,7 +57,7 @@ void ofApp::draw()
 //------------------------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo)
 {
-    MediaInfo info = AVProbe::probe(dragInfo.files[0]);
+    AVMediaInfo info = AVProbe::probe(dragInfo.files[0]);
 
     std::stringstream ss;
 
@@ -69,7 +69,7 @@ void ofApp::dragEvent(ofDragInfo dragInfo)
         ss << "stream (" << ofToString(i+1) << "/" << info.streams.size() << ")" << endl;
         ss << "=========================================================================" << endl;
 
-        Stream stream = info.streams[i];
+        AVStreamInfo stream = info.streams[i];
 
         if(stream.codecType == AVMEDIA_TYPE_VIDEO)
         {
