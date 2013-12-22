@@ -27,7 +27,7 @@
 
 
 #include "ofUtils.h"
-#include "MediaInfo.h"
+#include "ofx/Media/AVMediaInfo.h"
 
 
 namespace ofx {
@@ -37,7 +37,8 @@ namespace Media {
 class AVProbe
 {
 public:
-    static MediaInfo probe(const std::string& filePath);
+    static AVMediaInfo probe(const std::string& path);
+    
 };
 
 

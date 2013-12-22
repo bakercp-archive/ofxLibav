@@ -23,7 +23,7 @@
 // =============================================================================
 
 
-#include "AVProbe.h"
+#include "ofx/Media/AVInfo.h"
 #include <math.h>
 
 
@@ -55,12 +55,12 @@ static void print_error(const char *filename, int errorCode)
 }
 
     
-MediaInfo AVProbe::probe(const std::string& filePath)
+AVMediaInfo AVProbe::probe(const std::string& path)
 {
 
-    MediaInfo info;
+    AVMediaInfo info;
 
-    info.path = ofToDataPath(filePath,true);
+    info.path = ofToDataPath(path, true);
 
     av_register_all();
 
@@ -122,7 +122,7 @@ MediaInfo AVProbe::probe(const std::string& filePath)
     
     for (std::size_t streamIdx = 0; streamIdx < avFormatContext->nb_streams; streamIdx++)
     {
-        ofx::Media::Stream avStream;
+        ofx::Media::AVStreamInfo avStream;
 
         AVStream* stream = avFormatContext->streams[streamIdx];
         const AVCodec *dec;

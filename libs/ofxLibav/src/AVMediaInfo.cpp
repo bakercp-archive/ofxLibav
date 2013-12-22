@@ -23,63 +23,18 @@
 // =============================================================================
 
 
-#include "MediaInfo.h"
+#include "ofx/Media/AVMediaInfo.h"
 
 
 namespace ofx {
 namespace Media {
 
 
-Stream::Stream():
-    id(-1),
-    codecID(AV_CODEC_ID_NONE),
-    codecName("unknown"),
-    codecLongName("unknown"),
-    codecProfile("unknown"),
-    codecProperties(0),
-    level(-1),
-    codecTag("unknown"),
-    streamCodecTag("unknown"),
-    averageBitRate(-1),
-
-    duration(-1),
-    startTime(-1),
-    numFrames(-1),
-
-    audioNumChannels(-1),
-    audioSampleRate(-1),
-    audioBitsPerSample(-1),
-
-    videoWidth(0),
-    videoHeight(0),
-    videoFrameRate(0),
-    videoHasBFrames(false),
-    videoPixelFormatDescriptor("unknown"),
-    videoDecodedFormat("unknown")
-{
-    averageFrameRate.num = -1;
-    averageFrameRate.den = -1;
-
-    timeBase.num = -1;
-    timeBase.den = -1;
-
-    videoSampleAspectRatio.num = -1;
-    videoSampleAspectRatio.den = -1;
-
-    videoDisplayAspectRatio.num = -1;
-    videoDisplayAspectRatio.den = -1;
-}
-
-Stream::~Stream()
+AVMediaInfo::AVMediaInfo()
 {
 }
 
-
-MediaInfo::MediaInfo()
-{
-}
-
-MediaInfo::~MediaInfo()
+AVMediaInfo::~AVMediaInfo()
 {
 }
 
