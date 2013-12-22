@@ -35,9 +35,13 @@ namespace Media {
 
 
 class AVProbe
+    /// \brief Examine a media file for information about encoding, duration, etc.
 {
 public:
     static AVMediaInfo probe(const std::string& path);
+        ///< \brief Probe the contents of a media file.
+        ///< \param path is the path to the media file to be examined.
+        ///< \returns information about the media file.
     
 };
 

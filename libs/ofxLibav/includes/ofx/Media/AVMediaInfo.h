@@ -45,13 +45,17 @@ namespace Media {
 
 
 class AVMediaInfo
+    /// \brief an object representing media information.
 {
 public:
     AVMediaInfo();
     ~AVMediaInfo();
 
     Poco::Path path;
+        ///< \brief The path of the media asset.
+
     std::vector<AVStreamInfo> streams;
+        ///< \brief Information about each of the asset's streams.
 
 };
 
