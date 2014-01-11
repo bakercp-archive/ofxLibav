@@ -57,6 +57,8 @@ public:
     std::vector<AVStreamInfo> streams;
         ///< \brief Information about each of the asset's streams.
 
+    Poco::Net::NameValueCollection metadata;
+
 };
 
 

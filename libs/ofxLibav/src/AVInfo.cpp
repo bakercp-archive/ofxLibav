@@ -88,6 +88,16 @@ AVMediaInfo AVProbe::probe(const std::string& path)
         return info;
     }
 
+    // add file-wide metadata
+    if(avFormatContext->metadata != NULL)
+    {
+        AVDictionaryEntry *t = NULL;
+        while((t = av_dict_get(avFormatContext->metadata, "", t, AV_DICT_IGNORE_SUFFIX)))
+        {
+            info.metadata.add(t->key, t->value);
+        }
+    }
+
     // bind a decoder to each input stream
     for(std::size_t i = 0; i < avFormatContext->nb_streams; i++)
     {

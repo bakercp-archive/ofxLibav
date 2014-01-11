@@ -62,6 +62,14 @@ void ofApp::dragEvent(ofDragInfo dragInfo)
     std::stringstream ss;
 
     ss << "filename:" << " " << info.path.getFileName() << endl;
+    ss << setw(10) << "Metadata:" << endl;
+
+    Poco::Net::NameValueCollection::ConstIterator iter = info.metadata.begin();
+    while(iter != info.metadata.end())
+    {
+        ss << setw(20) << iter->first << "=" << iter->second << endl;
+        ++iter;
+    }
 
     for(size_t i = 0; i < info.streams.size(); i++)
     {
