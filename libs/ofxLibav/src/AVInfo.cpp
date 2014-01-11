@@ -44,7 +44,7 @@ namespace Media {
 static void print_error(const char *filename, int errorCode)
 {
     char errorBuffer[128];
-    const char *errorBufferPtr = errorBuffer;
+    const char* errorBufferPtr = errorBuffer;
     
     if (av_strerror(errorCode, errorBuffer, sizeof(errorBuffer)) < 0)
     {
@@ -64,14 +64,14 @@ AVMediaInfo AVProbe::probe(const std::string& path)
 
     av_register_all();
 
-    AVFormatContext* avFormatContext = NULL;
+    AVFormatContext* avFormatContext = 0;
     
     int error = -1;
     
     error = avformat_open_input(&avFormatContext,
                                 info.path.toString().c_str(),
-                                NULL,  // we are not asking for a specific format
-                                NULL); // we are not providing specific format details
+                                0,  // we are not asking for a specific format
+                                0); // we are not providing specific format details
 
     if(error < 0)
     {
@@ -80,7 +80,7 @@ AVMediaInfo AVProbe::probe(const std::string& path)
     }
     
     // fill the streams in the format context 
-    error = avformat_find_stream_info(avFormatContext, NULL);
+    error = avformat_find_stream_info(avFormatContext, 0);
 
     if(error < 0)
     {
@@ -89,9 +89,9 @@ AVMediaInfo AVProbe::probe(const std::string& path)
     }
 
     // add file-wide metadata
-    if(avFormatContext->metadata != NULL)
+    if(avFormatContext->metadata)
     {
-        AVDictionaryEntry *t = NULL;
+        AVDictionaryEntry *t = 0;
         while((t = av_dict_get(avFormatContext->metadata, "", t, AV_DICT_IGNORE_SUFFIX)))
         {
             info.metadata.add(t->key, t->value);
@@ -103,7 +103,7 @@ AVMediaInfo AVProbe::probe(const std::string& path)
     {
 
         AVStream* stream = avFormatContext->streams[i];
-        AVCodec*  codec  = NULL;
+        AVCodec*  codec  = 0;
 
         if (stream->codec->codec_id == AV_CODEC_ID_PROBE)
         {
@@ -113,13 +113,13 @@ AVMediaInfo AVProbe::probe(const std::string& path)
         {
             codec = avcodec_find_decoder(stream->codec->codec_id);
 
-            if(NULL == codec)
+            if(!codec)
             {
                 ofLogWarning("ofxAVProbe::probe") << "Unsupported codec with id " << stream->codec->codec_id << " for input stream " << stream->index;
             }
             else
             {
-                error = avcodec_open2(stream->codec, codec, NULL);
+                error = avcodec_open2(stream->codec, codec, 0);
 
                 if(error < 0)
                 {
@@ -135,12 +135,12 @@ AVMediaInfo AVProbe::probe(const std::string& path)
         ofx::Media::AVStreamInfo avStream;
 
         AVStream* stream = avFormatContext->streams[streamIdx];
-        const AVCodec *dec;
+        const AVCodec* dec;
 
         const char* profile;
         char val_str[128];
         AVRational displayAspectRatio;
-        AVRational* sampleAspectRatio = NULL;
+        AVRational* sampleAspectRatio = 0;
 
         avStream.averageFrameRate = stream->avg_frame_rate;
         avStream.averageBitRate = stream->codec->bit_rate;
@@ -149,18 +149,18 @@ AVMediaInfo AVProbe::probe(const std::string& path)
         avStream.duration = stream->duration;
         avStream.numFrames = stream->nb_frames;
 
-        if (NULL != stream->codec)
+        if (stream->codec)
         {
             dec = stream->codec->codec;
 
-            if (NULL != dec)
+            if (dec)
             {
                 avStream.codecName = std::string(dec->name);
                 avStream.codecLongName = std::string(dec->long_name);
 
                 profile = av_get_profile_name(dec, stream->codec->profile);
 
-                if(NULL != profile)
+                if(profile)
                 {
                     avStream.codecProfile = profile;
                 }
@@ -225,7 +225,7 @@ AVMediaInfo AVProbe::probe(const std::string& path)
                     
                     const AVPixFmtDescriptor* desc = av_pix_fmt_desc_get(stream->codec->pix_fmt);
 
-                    if(desc != NULL)
+                    if(desc)
                     {
                         avStream.videoPixelFormatDescriptor = desc->name;
                     }
@@ -254,9 +254,10 @@ AVMediaInfo AVProbe::probe(const std::string& path)
         }
 
 
-        if(stream->metadata != NULL)
+        if(stream->metadata)
         {
-             AVDictionaryEntry *t = NULL;
+             AVDictionaryEntry *t = 0;
+
              while((t = av_dict_get(stream->metadata, "", t, AV_DICT_IGNORE_SUFFIX)))
              {
                 avStream.metadata.add(t->key,t->value);
@@ -268,7 +269,7 @@ AVMediaInfo AVProbe::probe(const std::string& path)
     }
 
     // close decoder for each stream
-    for (int i = 0; i < avFormatContext->nb_streams; i++)
+    for (std::size_t i = 0; i < avFormatContext->nb_streams; i++)
     {
         avcodec_close(avFormatContext->streams[i]->codec);
     }

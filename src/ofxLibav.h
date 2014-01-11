@@ -25,6 +25,6 @@
 
 #pragma once
 
-#include "AVInfo.h"
-#include "AVMediaInfo.h"
-#include "AVStreamInfo.h"
+#include "ofx/Media/AVInfo.h"
+#include "ofx/Media/AVMediaInfo.h"
+#include "ofx/Media/AVStreamInfo.h"
