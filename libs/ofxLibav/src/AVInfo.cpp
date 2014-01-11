@@ -186,10 +186,10 @@ AVMediaInfo AVProbe::probe(const std::string& path)
 
             switch (stream->codec->codec_type)
             {
-                case AVMEDIA_TYPE_UNKNOWN:       ///< Usually treated as AVMEDIA_TYPE_DATA
-                case AVMEDIA_TYPE_DATA:          ///< Opaque data information usually continuous
+                case AVMEDIA_TYPE_UNKNOWN: // Usually treated as AVMEDIA_TYPE_DATA
+                case AVMEDIA_TYPE_DATA:    // Opaque data information usually continuous
                 case AVMEDIA_TYPE_SUBTITLE:
-                case AVMEDIA_TYPE_ATTACHMENT:    ///< Opaque data information usually sparse
+                case AVMEDIA_TYPE_ATTACHMENT: // Opaque data information usually sparse
                 case AVMEDIA_TYPE_NB:
                 case AVMEDIA_TYPE_VIDEO:
                 {
