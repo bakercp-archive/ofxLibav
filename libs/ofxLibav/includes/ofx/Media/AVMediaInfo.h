@@ -44,18 +44,18 @@ namespace ofx {
 namespace Media {
 
 
+/// \brief an object representing media information.
 class AVMediaInfo
-    /// \brief an object representing media information.
 {
 public:
     AVMediaInfo();
     ~AVMediaInfo();
 
+    /// \brief The path of the media asset.
     Poco::Path path;
-        ///< \brief The path of the media asset.
 
+    /// \brief Information about each of the asset's streams.
     std::vector<AVStreamInfo> streams;
-        ///< \brief Information about each of the asset's streams.
 
     Poco::Net::NameValueCollection metadata;
 

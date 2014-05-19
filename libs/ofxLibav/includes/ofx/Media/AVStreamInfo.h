@@ -43,8 +43,8 @@ namespace ofx {
 namespace Media {
 
 
+/// \brief An object representing details of one of a media asset's streams.
 class AVStreamInfo
-    /// \brief An object representing details of one of a media asset's streams. 
 {
 public:
     AVStreamInfo();

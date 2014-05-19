@@ -34,15 +34,15 @@ namespace ofx {
 namespace Media {
 
 
+/// \brief Examine a media file for information about encoding, duration, etc.
 class AVProbe
-    /// \brief Examine a media file for information about encoding, duration, etc.
 {
 public:
+    /// \brief Probe the contents of a media file.
+    /// \param path is the path to the media file to be examined.
+    /// \returns information about the media file.
     static AVMediaInfo probe(const std::string& path);
-        ///< \brief Probe the contents of a media file.
-        ///< \param path is the path to the media file to be examined.
-        ///< \returns information about the media file.
-    
+
 };
 
 
